@@ -18,4 +18,10 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+ul,
+li {
+  list-style: none;
+  text-align: left;
+}
+</style>

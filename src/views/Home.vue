@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       list: [],
+      listSort: [],
     };
   },
   methods: {
@@ -22,12 +23,17 @@ export default {
       this.$axios
         .get("https://api.github.com/repos/facebook/create-react-app/issues")
         .then((res) => {
-          console.log(res);
           this.list = res.data;
+          this.commentsSort();
         })
         .catch((e) => {
           console.log(e);
         });
+    },
+    commentsSort() {
+      this.list.sort(function (a, b) {
+        return b.comments - a.comments;
+      });
     },
   },
   mounted() {
