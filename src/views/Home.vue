@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <IssueList :list="list" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import IssueList from "@/components/IssueList.vue";
 
 export default {
   name: "Home",
   components: {
-    HelloWorld,
+    IssueList,
+  },
+  data() {
+    return {
+      list: [],
+    };
+  },
+  methods: {
+    getList() {
+      this.$axios
+        .get("https://api.github.com/repos/facebook/create-react-app/issues")
+        .then((res) => {
+          console.log(res);
+          this.list = res.data;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+  mounted() {
+    this.getList();
   },
 };
 </script>

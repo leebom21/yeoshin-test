@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">깃허브의 이슈 리스트 목록</router-link> |
+      <router-link to="/">깃허브의 이슈 리스트 목록</router-link>
     </div>
     <router-view />
   </div>
@@ -22,9 +22,10 @@
   a {
     font-weight: bold;
     color: #2c3e50;
+    text-decoration: none;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #ff368b;
     }
   }
 }
